@@ -13,6 +13,6 @@
         "scripts": ["background.js"]
     },
 
-    "permissions": ["activeTab", "menus", "tabs"]
+    "permissions": ["activeTab", "contextMenus", "tabs"]
   }
   
