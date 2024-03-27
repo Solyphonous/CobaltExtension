@@ -1,5 +1,5 @@
 {
-    "manifest_version": 3,
+    "manifest_version": 2,
     "name": "CobaltExtension",
     "version": "1.0",
   
@@ -13,6 +13,6 @@
         "scripts": ["background.js"]
     },
 
-    "permissions": ["activeTab", "menus"]
+    "permissions": ["activeTab", "menus", "tabs"]
   }
   
