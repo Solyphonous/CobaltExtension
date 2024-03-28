@@ -1,7 +1,6 @@
 html {
-    height: 100%;
-    width: 100%;
-    /*margin: 0;*/
+    margin: 0;
+    overflow: hidden;
 }
 
 button {
@@ -11,7 +10,8 @@ button {
 
 body {
     text-align: center;
-    margin: 10px;
+    padding-left: 2px;
+    padding-right: 2px;
     color: white;
     background-color: black;
     width: 100%;
