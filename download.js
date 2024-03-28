@@ -19,17 +19,16 @@ export function download() {
             .then(json => {
                 if (json.status != "error") {
 
-                    console.log("Trying to open new tab with url " + json.url)
-
                     browser.tabs.create({
                         url: json.url
                     }).then(tab => {
                         browser.tabs.onUpdated.addListener(function (tabId, changeInfo, updatedTab) {
-                            if (tabId === tab.id && changeInfo.status === 'complete') {
+                            if (tabId === tab.id && changeInfo.status === 'complete' && !json.url.includes("twimg")) {
                                 browser.tabs.remove(tabId);
                             }
                         })
                     })
+                    
                 }
                 else {
                     //Logs error if returned from cobalt api
