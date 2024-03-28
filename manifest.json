@@ -10,9 +10,10 @@
     },
 
     "background": {
-        "scripts": ["background.js"]
+        "scripts": ["background.js"],
+        "type": "module"
     },
 
-    "permissions": ["activeTab", "contextMenus", "tabs"]
+    "permissions": ["activeTab", "contextMenus", "tabs", "downloads"]
   }
   
