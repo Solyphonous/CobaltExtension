@@ -27,6 +27,10 @@ export function download() {
                                 browser.tabs.remove(tabId);
                             }
                         })
+
+                        if (window.location.pathname == "/popup.html") {
+                            window.close()
+                        }
                     })
                     
                 }
@@ -44,7 +48,7 @@ export function download() {
 document.addEventListener('DOMContentLoaded', function() {
     if (window.location.pathname == "/popup.html") {
         document.getElementById('download').addEventListener('click', function() {
-            download();
+            download()
         });
     }
 });
