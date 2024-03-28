@@ -40,3 +40,12 @@ export function download() {
             .catch(error => console.error("Error: ", error))
     })
 }
+
+//Button inside browser action menu
+document.addEventListener('DOMContentLoaded', function() {
+    if (window.location.pathname == "/popup.html") {
+        document.getElementById('download').addEventListener('click', function() {
+            download();
+        });
+    }
+});
