@@ -1,13 +1,19 @@
 <!DOCTYPE html>
+
 <head>
     <link rel="stylesheet" href="style.css">
     <script src="download.js" type="module" defer></script>
+    <script src="popup.js" type="module" defer></script>
 </head>
 
 <body>
-    <h1>cobalt</h1>
+    <h1 style="width:200px">cobalt</h1>
     <p style="margin-bottom: 0px;margin-top: 0px;">browser extension</p>
     <button id="download">
         <img src=Icons/400.png style="height:200px; width:200px" title="Download">
     </button>
+    <div class="choiceContainer" id="mode">
+        <button id="auto" class="choiceButton">auto</button>
+        <button id="audio" class="choiceButton">audio</button>
+    </div>
 </body>

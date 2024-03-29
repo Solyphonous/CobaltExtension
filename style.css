@@ -3,6 +3,8 @@ body {
     color: white;
     background-color: black;
     font-family: "Noto Sans Mono", "Consolas", "SF Mono", monospace;
+    margin: auto;
+    user-select: none;
 }
 
 h1, p {
@@ -13,5 +15,21 @@ button {
     border: none;
     cursor: pointer;
     background-color: transparent;
-    font-size: 50px;
+    font-size: 20px;
+    font-family: "Noto Sans Mono", "Consolas", "SF Mono", monospace;
+}
+
+.choiceButton {
+    flex: 1;
+    background-color: black;
+    color: white;
+}
+
+.choiceButton.selected {
+    background-color: white;
+    color: black
+}
+
+.choiceContainer {
+    display: flex
 }

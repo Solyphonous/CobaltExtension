@@ -1,10 +1,25 @@
+const settingsMap = {
+    mode: {
+        auto: false,
+        audio: true,
+    }
+}
+
+function getSetting(setting) {
+    let value = localStorage.getItem(setting)
+    console.log(settingsMap[setting][value])
+    return settingsMap[setting][value]
+}
+
 export function download() {
     browser.tabs.query({ currentWindow: true, active: true }).then(tabs => {
-        let url = tabs[0].url
-        var uri = encodeURIComponent(url)
 
-        var data = {
-            url: uri
+        let url = tabs[0].url
+        let uri = encodeURIComponent(url)
+
+        let data = {
+            url: uri,
+            isAudioOnly: getSetting("mode") 
         }
 
         fetch("https://co.wuk.sh/api/json", {

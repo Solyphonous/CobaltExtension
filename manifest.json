@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "CobaltExtension",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "browser_specific_settings": {
         "gecko": {
             "id": "cobaltextension@solyphonous.com"
@@ -27,6 +27,7 @@
     "permissions": [
         "activeTab",
         "contextMenus",
-        "tabs"
+        "tabs",
+        "storage"
     ]
 }
