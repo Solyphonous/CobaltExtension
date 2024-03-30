@@ -6,22 +6,34 @@ const settingsMap = {
 }
 
 function getSetting(setting) {
-    let value = localStorage.getItem(setting)
-    console.log(settingsMap[setting][value])
-    return settingsMap[setting][value]
-}
+    return new Promise((resolve, reject) => {
+        chrome.storage.local.get(null, function (data) {
+            if (setting in data) {
+                let value = data[setting]
+                
+                console.warn(data[setting])
+                console.warn(settingsMap[setting][value])
 
+                resolve(settingsMap[setting][value])
+            } else {
+                reject(null)
+            }
+        })
+    })
+    
+}
 export function download() {
-    browser.tabs.query({ currentWindow: true, active: true }).then(tabs => {
+    chrome.tabs.query({ currentWindow: true, active: true }).then(tabs => {
 
         let url = tabs[0].url
         let uri = encodeURIComponent(url)
 
         let data = {
             url: uri,
-            isAudioOnly: getSetting("mode") 
+            isAudioOnly: getSetting("mode")
         }
 
+        console.warn(data.isAudioOnly)
         fetch("https://co.wuk.sh/api/json", {
             method: "POST",
             headers: {
@@ -34,12 +46,12 @@ export function download() {
             .then(json => {
                 if (json.status != "error") {
 
-                    browser.tabs.create({
+                    chrome.tabs.create({
                         url: json.url
                     }).then(tab => {
-                        browser.tabs.onUpdated.addListener(function (tabId, changeInfo, updatedTab) {
+                        chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, updatedTab) {
                             if (tabId === tab.id && changeInfo.status === 'complete' && !json.url.includes("twimg")) {
-                                browser.tabs.remove(tabId);
+                                chrome.tabs.remove(tabId);
                             }
                         })
 
@@ -47,7 +59,6 @@ export function download() {
                             window.close()
                         }
                     })
-                    
                 }
                 else {
                     //Logs error if returned from cobalt api
@@ -60,10 +71,15 @@ export function download() {
 }
 
 //Button inside browser action menu
-document.addEventListener('DOMContentLoaded', function() {
-    if (window.location.pathname == "/popup.html") {
-        document.getElementById('download').addEventListener('click', function() {
-            download()
-        });
-    }
-});
+try {
+    document.addEventListener('DOMContentLoaded', function () {
+        if (window.location.pathname == "/popup.html") {
+            document.getElementById('download').addEventListener('click', function () {
+                download()
+            });
+        }
+    });
+
+} catch {
+    console.warn("Stupid warning for chrome port")
+}
