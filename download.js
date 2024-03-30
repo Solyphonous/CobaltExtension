@@ -5,15 +5,24 @@ const settingsMap = {
     }
 }
 
+function apiInitialiser() {
+    if (typeof browser !== "undefined" && browser.storage.local ) {
+        console.log("Browser is firefox")
+        return browser
+    }
+    else if (typeof chrome !== "undefined" && chrome.storage.local) {
+        console.log("Browser is chrome")
+        return chrome
+    }
+}
+
+const api = apiInitialiser()
+
 function getSetting(setting) {
     return new Promise((resolve, reject) => {
-        chrome.storage.local.get(null, function (data) {
+        api.storage.local.get(null, function (data) {
             if (setting in data) {
                 let value = data[setting]
-                
-                console.warn(data[setting])
-                console.warn(settingsMap[setting][value])
-
                 resolve(settingsMap[setting][value])
             } else {
                 reject(null)
@@ -22,18 +31,19 @@ function getSetting(setting) {
     })
     
 }
-export function download() {
-    chrome.tabs.query({ currentWindow: true, active: true }).then(tabs => {
+export async function download() {
+    const isAudioOnly = await getSetting("mode")
+    
+    api.tabs.query({ currentWindow: true, active: true }).then(tabs => {
 
         let url = tabs[0].url
         let uri = encodeURIComponent(url)
 
         let data = {
             url: uri,
-            isAudioOnly: getSetting("mode")
+            isAudioOnly: isAudioOnly
         }
 
-        console.warn(data.isAudioOnly)
         fetch("https://co.wuk.sh/api/json", {
             method: "POST",
             headers: {
@@ -46,12 +56,12 @@ export function download() {
             .then(json => {
                 if (json.status != "error") {
 
-                    chrome.tabs.create({
+                    api.tabs.create({
                         url: json.url
                     }).then(tab => {
-                        chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, updatedTab) {
+                        api.tabs.onUpdated.addListener(function (tabId, changeInfo, updatedTab) {
                             if (tabId === tab.id && changeInfo.status === 'complete' && !json.url.includes("twimg")) {
-                                chrome.tabs.remove(tabId);
+                                api.tabs.remove(tabId);
                             }
                         })
 

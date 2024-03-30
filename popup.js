@@ -9,20 +9,38 @@ const defaults = {
 
 //Funcs
 
+function apiInitialiser() {
+    if (typeof browser !== "undefined" && browser.storage.local ) {
+        console.log("Browser is firefox")
+        return browser
+    }
+    else if (typeof chrome !== "undefined" && chrome.storage.local) {
+        console.log("Browser is chrome")
+        return chrome
+    }
+}
+
+const api = apiInitialiser()
+
 function loadValue(index) {
     return new Promise((resolve, reject) => {
-        chrome.storage.local.get(index).then(result => {
-            let [key, value] = Object.entries(result)[0]
-            if (value === undefined) {
+        api.storage.local.get(index).then(result => {
+            let key
+            let value
+
+            if (Object.keys(result).length === 0 ){
                 console.log("No value for", index)
-                chrome.storage.local.set({index: defaults[index]})
+                api.storage.local.set({[index]: defaults[index]})
                 value = defaults[index]
             }
+            else {
+                [key, value] = Object.entries(result)[0]
+            }
+            
             resolve(value)
         })
     })
 }
-
 
 function choiceHandler(event) {
     let selection = event.target
@@ -33,7 +51,7 @@ function choiceHandler(event) {
     })
     selection.classList.add("selected")
 
-    chrome.storage.local.set({[selection.parentElement.id]: selection.id}).then(() => {
+    api.storage.local.set({[selection.parentElement.id]: selection.id}).then(() => {
         console.warn("Set", selection.parentElement.id, "to", selection.id)
     })
 }
@@ -42,7 +60,6 @@ function loadData() {
     const allChoices = document.querySelectorAll(".choiceContainer")
     allChoices.forEach(choice => {
         loadValue(choice.id).then(value => {
-            console.log(value)
             document.getElementById(value).classList.add("selected")
         })
 
