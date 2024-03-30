@@ -9,6 +9,7 @@ Chrome:
 - Delete the firefox folder
 - Move manifest.json from Chrome folder to shared folder
 - Go to chrome://extensions
+- Click developer mode in the top right
 - Click "load unpacked"
 - Select shared folder
 - Huzzah!
