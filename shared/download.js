@@ -1,23 +1,10 @@
-const settingsMap = {
-    mode: {
-        auto: false,
-        audio: true,
-    }
-}
+import {api, settings} from "./init.js"
 
-function apiInitialiser() {
-    if (typeof browser !== "undefined" && browser.storage.local ) {
-        console.log("Browser is firefox")
-        return browser
-    }
-    else if (typeof chrome !== "undefined" && chrome.storage.local) {
-        console.log("Browser is chrome")
-        return chrome
-    }
-}
+//Consts
 
-const api = apiInitialiser()
+const settingsMap = settings
 
+//Funcs
 function getSetting(setting) {
     return new Promise((resolve, reject) => {
         api.storage.local.get(null, function (data) {

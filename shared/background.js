@@ -1,6 +1,5 @@
 import { download } from "./download.js"
-
-console.log("CobaltExtension initialised successfully")
+import { initialiseValue, settings, api } from "./init.js"
 
 chrome.contextMenus.create({
     id: "download",
@@ -17,3 +16,12 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
     }
 })
 
+//Settings initialisation
+
+Object.keys(settings).forEach(setting => {
+    console.log("Initialising", setting)
+    initialiseValue(setting)
+    api.storage.local.get(setting).then(value =>{
+        console.log(setting, "initialised to", Object.values(value)[0])
+    })
+})
