@@ -7,7 +7,7 @@ Firefox: Download from the Firefox Addons site [here](https://addons.mozilla.org
 Chrome: There is no version build directly for chrome at this time, since it costs $5 to put an extension on the chrome store and I am poor. However, you can still build it from source as a developer extension with the instructions below. This will *not* automatically update, but it's the best you're gonna get!
 
 From source (both firefox and chrome):
-- Download the source code under code -> download ZIP at the top of this page
+- Download the source code under code -> download ZIP at the top of this page OR use `git clone https://github.com/Solyphonous/CobaltExtension.git` in git bash (windows) or bash (linux) to clone the repo
 - Delete the firefox/chrome folder depending on whichever browser you aren't using
 - Move manifest.json from browser folder to shared folder
 - Go to chrome://extensions (CHROME) or about:debugging -> This Firefox (FIREFOX)
