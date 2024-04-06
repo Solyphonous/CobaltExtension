@@ -1,4 +1,4 @@
-import {api, settings} from "./init.js"
+import { api, settings } from "./init.js"
 
 //Consts
 
@@ -16,12 +16,21 @@ function getSetting(setting) {
             }
         })
     })
-    
+
 }
 export async function download() {
     const isAudioOnly = await getSetting("mode")
     const vQuality = await getSetting("quality")
-    
+    const vCodec = await getSetting("youtube codec")
+    const aFormat = await getSetting("audio format")
+    const filenamePattern = await getSetting("filename style")
+    const isTTFullAudio = await getSetting("tiktok og audio")
+    const isAudioMuted = await getSetting("mute audio")
+    const dubLang = await getSetting("yt audio track")
+    const disableMetaData = await getSetting("metadata")
+    const twitterGif = await getSetting("twitter gifs")
+    const vimeoDash = await getSetting("vimeo type")
+
     api.tabs.query({ currentWindow: true, active: true }).then(tabs => {
 
         let url = tabs[0].url
@@ -30,7 +39,16 @@ export async function download() {
         let data = {
             url: uri,
             isAudioOnly: isAudioOnly,
-            vQuality: vQuality
+            vQuality: vQuality,
+            vCodec: vCodec,
+            aFormat: aFormat,
+            filenamePattern: filenamePattern,
+            isTTFullAudio: isTTFullAudio,
+            isAudioMuted: isAudioMuted,
+            dubLang: dubLang,
+            disableMetaData: disableMetaData,
+            twitterGif: twitterGif,
+            vimeoDash: vimeoDash
         }
 
         fetch("https://co.wuk.sh/api/json", {

@@ -24,7 +24,7 @@ const defaults = {
     "mute audio": "unmuted",
     "yt audio track": "original",
     "tiktok og audio": "modified audio",
-    "file name style": "classic",
+    "filename style": "classic",
     "metadata": "yes metadata"
 }
 
@@ -63,8 +63,8 @@ const settings = {
         "opus": "opus"
     },
     "mute audio": {
-        "unmuted": true,
-        "muted": false
+        "unmuted": false,
+        "muted": true
     },
     "yt audio track": {
         "original": false,
@@ -74,7 +74,7 @@ const settings = {
         "original": true,
         "modified audio": false
     },
-    "file name style": {
+    "filename style": {
         "classic": "classic",
         "pretty": "pretty",
         "basic": "basic",
