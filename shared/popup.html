@@ -7,6 +7,7 @@
 </head>
 
 <body>
+    <div id="settings-button">&gt</div>
     <h1 style="width:200px"><a href="https://cobalt.tools/">cobalt</a></h1>
     <p style="margin-bottom: 0px;margin-top: 0px;">browser extension</p>
     <button id="download">
@@ -15,5 +16,30 @@
     <div class="choiceContainer" id="mode">
         <button id="auto" class="choiceButton">auto</button>
         <button id="audio" class="choiceButton">audio</button>
+    </div>
+
+    <div id="settings">
+        <div class="back" id="settings-back">&lt</div>
+        <h1>settings</h1>
+        
+
+        <div> <!-- Settings container -->
+            <p>more info can be found on the cobalt website</p>
+
+            <div class="dropdown">
+                <button class="dropdown-btn">quality</button>
+                <div class="dropdown-content" id="quality">
+                    <button class="setting" id="360p">360p</button>
+                    <button class="setting" id="480p">480p</button>
+                    <button class="setting" id="720p">720p</button>
+                    <button class="setting" id="1080p">1080p</button>
+                    <button class="setting" id="1440p">1440p</button>
+                    <button class="setting" id="4k">4k</button>
+                    <button class="setting" id="8k+">8k+</button>
+                </div>
+            </div>
+
+        </div>
+
     </div>
 </body>

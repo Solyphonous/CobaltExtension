@@ -20,6 +20,7 @@ function getSetting(setting) {
 }
 export async function download() {
     const isAudioOnly = await getSetting("mode")
+    const vQuality = await getSetting("quality")
     
     api.tabs.query({ currentWindow: true, active: true }).then(tabs => {
 
@@ -28,7 +29,8 @@ export async function download() {
 
         let data = {
             url: uri,
-            isAudioOnly: isAudioOnly
+            isAudioOnly: isAudioOnly,
+            vQuality: vQuality
         }
 
         fetch("https://co.wuk.sh/api/json", {

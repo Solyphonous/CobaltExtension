@@ -16,12 +16,22 @@ const api = apiInitialiser()
 
 const defaults = {
     mode: "auto",
+    quality: "720p"
 }
 
 const settings = {
     mode: {
         auto: false,
         audio: true,
+    },
+    quality: {
+        "360p": "360",
+        "480p": "480",
+        "720p": "720",
+        "1080p": "1080",
+        "1440p": "1440",
+        "4k": "4k",
+        "8k+": "max"
     }
 }
 

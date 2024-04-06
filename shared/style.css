@@ -1,14 +1,18 @@
 body {
-    text-align: center;
     color: white;
     background-color: black;
     font-family: "Noto Sans Mono", "Consolas", "SF Mono", monospace;
     margin: auto;
     user-select: none;
+    overflow: hidden;
 }
 
 h1, p {
-    margin-bottom: 0px;
+    text-align: center;
+    margin-bottom: 0;
+    margin-top: 10px;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 a {
@@ -35,6 +39,80 @@ button {
     color: black
 }
 
+.setting {
+    display: block;
+    background-color: black;
+    color: white;
+    width: 100%;
+    text-align: left;
+    margin: 0;
+
+}
+
+.setting.selected {
+    background-color: white;
+    color: black
+}
+
 .choiceContainer {
     display: flex
+}
+
+#settings {
+    position: absolute;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    transition: right .3s ease;
+    overflow-y: scroll;
+}
+
+#settings.open {
+    right: 0;
+}
+
+#settings-button {
+    text-align: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    color: black;
+    font-size: 25px;
+    margin: auto;
+    cursor: pointer;
+}
+
+.back {
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    color: black;
+    font-size: 25px;
+    margin: auto;
+    cursor: pointer;
+}
+
+.dropdown-btn {
+    cursor: pointer;
+    color: white;
+    text-align: left;
+    margin-left: 0;
+    font-size: 30px;
+}
+
+.dropdown-content {
+    display: none;
+}
+
+.dropdown-content.active {
+    display: block;
 }
