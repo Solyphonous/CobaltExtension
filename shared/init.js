@@ -15,16 +15,25 @@ const api = apiInitialiser()
 //Local Storage
 
 const defaults = {
-    mode: "auto",
-    quality: "720p"
+    "mode": "auto",
+    "quality": "720p",
+    "twitter gifs": "Convert to .gif",
+    "youtube codec": "h264 (mp4)",
+    "vimeo type": "progressive",
+    "audio format": "mp3",
+    "mute audio": "unmuted",
+    "yt audio track": "original",
+    "tiktok og audio": "modified audio",
+    "file name style": "classic",
+    "metadata": "yes metadata"
 }
 
 const settings = {
-    mode: {
+    "mode": {
         auto: false,
         audio: true,
     },
-    quality: {
+    "quality": {
         "360p": "360",
         "480p": "480",
         "720p": "720",
@@ -32,6 +41,48 @@ const settings = {
         "1440p": "1440",
         "4k": "4k",
         "8k+": "max"
+    },
+    "twitter gifs": {
+        "Convert to .gif": true,
+        "Leave as mp4": false
+    },
+    "youtube codec": {
+        "h264 (mp4)": "h264",
+        "av1 (mp4)": "av1",
+        "vp9 (webm)": "vp9"
+    },
+    "vimeo type": {
+        "progressive": false,
+        "dash": true
+    },
+    "audio format": {
+        "best": "best",
+        "mp3": "mp3",
+        "ogg": "ogg",
+        "wav": "wav",
+        "opus": "opus"
+    },
+    "mute audio": {
+        "unmuted": true,
+        "muted": false
+    },
+    "yt audio track": {
+        "original": false,
+        "translated": true
+    },
+    "tiktok og audio": {
+        "original": true,
+        "modified audio": false
+    },
+    "file name style": {
+        "classic": "classic",
+        "pretty": "pretty",
+        "basic": "basic",
+        "nerdy": "nerdy"
+    },
+    "metadata": {
+        "yes metadata": false,
+        "no metadata": true
     }
 }
 
