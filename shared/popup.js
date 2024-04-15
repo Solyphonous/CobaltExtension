@@ -42,7 +42,6 @@ function dropdownHandler(event) {
 function generateSettings() {
     for (const key in settings) {
         if (key != "mode") {
-            console.log("Creating dropdown for ", key)
             let dropdown = document.createElement("div")
             dropdown.classList.add("dropdown")
             document.getElementById("settings").appendChild(dropdown)
@@ -72,7 +71,6 @@ function generateSettings() {
 // Main
 
 document.addEventListener("DOMContentLoaded", function () {
-    console.log("wawawa")
     generateSettings()
 
     const allButtons = Array.from(document.querySelectorAll(".choiceButton")).concat(Array.from(document.querySelectorAll(".setting")))
@@ -86,7 +84,6 @@ document.addEventListener("DOMContentLoaded", function () {
     })
 
     document.querySelectorAll(".dropdown-btn").forEach(button => {
-        console.log("lalala")
         button.addEventListener("click", dropdownHandler)
     })
 
