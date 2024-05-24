@@ -28,7 +28,7 @@ function choiceHandler(event) {
     selection.classList.add("selected")
 
     api.storage.local.set({ [selection.parentElement.id]: selection.id }).then(() => {
-        console.warn("Set", selection.parentElement.id, "to", selection.id)
+        console.log("Set", selection.parentElement.id, "to", selection.id)
     })
 }
 
