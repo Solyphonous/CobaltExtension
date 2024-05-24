@@ -2,7 +2,7 @@
 An extension for Firefox and Chromium browsers that uses the [cobalt](https://cobalt.tools/) API.
 
 ### Installation
-Firefox: Download from the Firefox Addons site [here](https://addons.mozilla.org/en-GB/firefox/addon/cobaltextension/)! (Version 1.3)
+Firefox: Download from the Firefox Addons site [here](https://addons.mozilla.org/en-GB/firefox/addon/cobaltextension/)! (Version 1.4)
 
 Chrome: Only available from source since youtube downloaders are not allowed on chrome.
 
