@@ -18,6 +18,12 @@ function getSetting(setting) {
     })
 
 }
+
+function showError(msg) {
+    const url = api.runtime.getURL('error.html') + '?error=' + encodeURIComponent(msg)
+    api.tabs.create({ url: url })
+}
+
 export async function download() {
     const isAudioOnly = await getSetting("mode")
     const vQuality = await getSetting("quality")
@@ -79,11 +85,11 @@ export async function download() {
                 }
                 else {
                     //Logs error if returned from cobalt api
-                    console.error(json.text)
+                    showError(json.text)
                 }
             })
             //Logs error if POST request fails
-            .catch(error => console.error("Error: ", error))
+            .catch(error => showError(error))
     })
 }
 
