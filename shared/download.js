@@ -36,6 +36,7 @@ export async function download() {
     const disableMetaData = await getSetting("metadata")
     const twitterGif = await getSetting("twitter gifs")
     const vimeoDash = await getSetting("vimeo type")
+    const tiktokH265 = await getSetting("tiktok codec")
 
     api.tabs.query({ currentWindow: true, active: true }).then(tabs => {
 
@@ -54,7 +55,8 @@ export async function download() {
             dubLang: dubLang,
             disableMetaData: disableMetaData,
             twitterGif: twitterGif,
-            vimeoDash: vimeoDash
+            vimeoDash: vimeoDash,
+            tiktokH265: tiktokH265
         }
 
         fetch("https://co.wuk.sh/api/json", {

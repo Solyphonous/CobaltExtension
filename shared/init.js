@@ -25,7 +25,8 @@ const defaults = {
     "yt audio track": "original",
     "tiktok og audio": "modified audio",
     "filename style": "classic",
-    "metadata": "yes metadata"
+    "metadata": "yes metadata",
+    "tiktok codec": "default"
 }
 
 const settings = {
@@ -83,6 +84,10 @@ const settings = {
     "metadata": {
         "yes metadata": false,
         "no metadata": true
+    },
+    "tiktok codec": {
+        "default": false,
+        "h265": true
     }
 }
 
