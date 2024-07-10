@@ -2,9 +2,6 @@ import { api, settings } from "./init.js"
 
 console.log("popup.js initialised")
 
-// Consts 
-
-
 // Funcs
 
 // Data stuff
