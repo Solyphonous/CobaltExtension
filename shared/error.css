@@ -21,6 +21,6 @@ body {
     border-width: 5px;
     border-color: rgba(255, 55, 55, .2);
     border-radius: 5px;
-    
+    padding: 10px;
     background-color: rgba(255, 55, 55, 0.5);
 }
