@@ -1,14 +1,14 @@
 import { download } from "./download.js"
 import { initialiseValue, settings, api } from "./init.js"
 
-chrome.contextMenus.create({
+api.contextMenus.create({
     id: "download",
     title: "Download media on page",
     contexts: ["all"],
     type: "normal"
 });
 
-chrome.contextMenus.onClicked.addListener(async (info, tab) => {
+api.contextMenus.onClicked.addListener(async (info, tab) => {
     switch (info.menuItemId) {
         case "download":
             download()
