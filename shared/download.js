@@ -59,7 +59,7 @@ export async function download() {
             tiktokH265: tiktokH265
         }
 
-        fetch("https://co.wuk.sh/api/json", {
+        fetch("https://api.cobalt.tools/api/json", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
