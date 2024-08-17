@@ -5,26 +5,41 @@
     <script src="download.js" type="module" defer></script>
     <script src="popup.js" type="module" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
 </head>
 
 <body>
     <div id="settings-button">&gt</div>
+    <div id="instance-picker-button">&lt</div>
+
     <h1 style="width:200px"><a href="https://cobalt.tools/">cobalt</a></h1>
     <p style="margin-bottom: 0px;margin-top: 0px;">browser extension</p>
+
     <button id="download">
         <img src=Icons/400.png style="height:200px; width:200px" title="Download">
     </button>
+
     <div class="choiceContainer" id="mode">
         <button id="auto" class="choiceButton">auto</button>
         <button id="audio" class="choiceButton">audio</button>
     </div>
 
     <div id="settings">
-        <div class="back" id="settings-back">&lt</div>
+        <div id="settings-back">&lt</div>
         <h1>settings</h1>
         <p style="margin-top: 0;margin-bottom: 2px;">more info can be found on the cobalt website</p>
 
         <!-- Settings will be generated here -->
 
+    </div>
+
+    <div id="instance-picker">
+        <div id="instance-picker-back">&gt</div>
+        <h1>instance picker</h1>
+        <p style="margin-top: 0;margin-bottom: 2px;">choose instance to make api calls to. default is https://api.cobalt.tools</p>
+        <form id="instance-form">
+            <input type="url" id="instance-value" value="https://api.cobalt.tools">
+            <input type="submit" id="instance-submit" value=">">
+        </form>
     </div>
 </body>

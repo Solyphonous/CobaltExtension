@@ -26,7 +26,8 @@ const defaults = {
     "tiktok og audio": "modified audio",
     "filename style": "classic",
     "metadata": "yes metadata",
-    "tiktok codec": "default"
+    "tiktok codec": "default",
+    "instance": "https://api.cobalt.tools"
 }
 
 const settings = {
@@ -90,14 +91,13 @@ const settings = {
     "tiktok codec": {
         "default": false,
         "h265": true
-    }
+    },
+    "instance": {} // No options since it's a text field, table required anyway to months-old lack of forward planning
 }
 
 function initialiseValue(index) {
     return new Promise((resolve, reject) => {
         api.storage.local.get(index).then(result => {
-            let value
-
             if (Object.keys(result).length === 0 ){
                 console.log("No value for", index)
                 api.storage.local.set({[index]: defaults[index]})
@@ -107,4 +107,4 @@ function initialiseValue(index) {
     })
 }
 
-export {api, defaults, settings, initialiseValue}
+export {api, settings, initialiseValue}

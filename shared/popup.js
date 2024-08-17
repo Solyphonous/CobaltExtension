@@ -12,6 +12,15 @@ function loadData(choices) {
             document.getElementById(value).classList.add("selected")
         })
     })
+
+    // Instance Picker
+
+    api.storage.local.get("instance").then(result => {
+        console.log(result)
+        let value = Object.values(result)[0]
+        console.log(value)
+        document.getElementById("instance-value").value = value
+    })
 }
 
 // Other
@@ -38,7 +47,7 @@ function dropdownHandler(event) {
 
 function generateSettings() {
     for (const key in settings) {
-        if (key != "mode") {
+        if (key != "mode" && key != "instance") {
             let dropdown = document.createElement("div")
             dropdown.classList.add("dropdown")
             document.getElementById("settings").appendChild(dropdown)
@@ -91,6 +100,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById("settings-back").addEventListener("click", function () {
         document.getElementById("settings").classList.remove("open")
+    })
+
+    // Instance picker handling
+
+    document.getElementById("instance-picker-button").addEventListener("click", function () {
+        document.getElementById("instance-picker").classList.add("open")
+    })
+
+    document.getElementById("instance-picker-back").addEventListener("click", function () {
+        document.getElementById("instance-picker").classList.remove("open")
+    })
+
+    document.getElementById("instance-form").addEventListener("submit", function (event) {
+        console.log("Submitted")
+        let url = document.getElementById("instance-value").value
+        console.log(url)
+        api.storage.local.set({"instance": url})
+        event.preventDefault()
     })
 })
 

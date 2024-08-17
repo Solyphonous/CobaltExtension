@@ -7,16 +7,21 @@ const settingsMap = settings
 //Funcs
 function getSetting(setting) {
     return new Promise((resolve, reject) => {
-        api.storage.local.get(null, function (data) {
-            if (setting in data) {
-                let value = data[setting]
-                resolve(settingsMap[setting][value])
-            } else {
-                reject(null)
-            }
-        })
+        if (setting == "instance") { // Stupid workaround for instance bc it's prob the only setting that will ever work like this
+            api.storage.local.get("instance").then(data => {
+                resolve(data["instance"])
+            })
+        } else {
+            api.storage.local.get(setting, function (data) { // What the fuck is going on here?? Why retrieve the entire settings list for every call??????
+                if (setting in data) {
+                    let value = data[setting]
+                    resolve(settingsMap[setting][value])
+                } else {
+                    reject(null)
+                }
+            })
+        }
     })
-
 }
 
 function showError(msg) {
@@ -25,18 +30,38 @@ function showError(msg) {
 }
 
 export async function download() {
-    const isAudioOnly = await getSetting("mode")
-    const vQuality = await getSetting("quality")
-    const vCodec = await getSetting("youtube codec")
-    const aFormat = await getSetting("audio format")
-    const filenamePattern = await getSetting("filename style")
-    const isTTFullAudio = await getSetting("tiktok og audio")
-    const isAudioMuted = await getSetting("mute audio")
-    const dubLang = await getSetting("yt audio track")
-    const disableMetaData = await getSetting("metadata")
-    const twitterGif = await getSetting("twitter gifs")
-    const vimeoDash = await getSetting("vimeo type")
-    const tiktokH265 = await getSetting("tiktok codec")
+
+    const promises = [
+        getSetting("mode"),
+        getSetting("quality"),
+        getSetting("youtube codec"),
+        getSetting("audio format"),
+        getSetting("filename style"),
+        getSetting("tiktok og audio"),
+        getSetting("mute audio"),
+        getSetting("yt audio track"),
+        getSetting("metadata"),
+        getSetting("twitter gifs"),
+        getSetting("vimeo type"),
+        getSetting("tiktok codec"),
+        getSetting("instance")
+    ]
+
+    const [
+        isAudioOnly,
+        vQuality,
+        vCodec,
+        aFormat,
+        filenamePattern,
+        isTTFullAudio,
+        isAudioMuted,
+        dubLang,
+        disableMetaData,
+        twitterGif,
+        vimeoDash,
+        tiktokH265,
+        instance
+    ] = await Promise.all(promises)
 
     api.tabs.query({ currentWindow: true, active: true }).then(tabs => {
 
@@ -59,7 +84,7 @@ export async function download() {
             tiktokH265: tiktokH265
         }
 
-        fetch("https://api.cobalt.tools/api/json", {
+        fetch(instance+"/api/json", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

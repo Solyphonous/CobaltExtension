@@ -58,7 +58,7 @@ button {
     display: flex
 }
 
-#settings {
+#settings, #instance-picker {
     position: absolute;
     top: 0;
     right: -100%;
@@ -73,7 +73,16 @@ button {
     right: 0;
 }
 
-#settings-button {
+#instance-picker {
+    left: -100%;
+    transition: left .3s ease;
+}
+
+#instance-picker.open {
+    left: 0;
+}
+
+#settings-button, #instance-picker-button {
     text-align: center;
     position: absolute;
     top: 0;
@@ -86,7 +95,12 @@ button {
     cursor: pointer;
 }
 
-.back {
+#instance-picker-button {
+    right: auto;
+    left: 0;
+}
+
+#settings-back, #instance-picker-back {
     text-align: center;
     position: absolute;
     top: 0;
@@ -97,6 +111,11 @@ button {
     font-size: 25px;
     margin: auto;
     cursor: pointer;
+}
+
+#instance-picker-back {
+    left: auto;
+    right: 0
 }
 
 .dropdown-btn {
