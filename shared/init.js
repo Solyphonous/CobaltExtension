@@ -107,4 +107,8 @@ function initialiseValue(index) {
     })
 }
 
+function superCoolFunction() {
+    console.log("made by Cameronwasnthere")
+}
+
 export {api, settings, initialiseValue}
