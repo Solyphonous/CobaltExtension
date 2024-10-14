@@ -38,11 +38,8 @@ export async function download() {
         getSetting("audio format"),
         getSetting("filename style"),
         getSetting("tiktok og audio"),
-        getSetting("mute audio"),
-        getSetting("yt audio track"),
         getSetting("metadata"),
         getSetting("twitter gifs"),
-        getSetting("vimeo type"),
         getSetting("tiktok codec"),
         getSetting("instance")
     ]
@@ -50,15 +47,12 @@ export async function download() {
     const [
         isAudioOnly,
         vQuality,
-        vCodec,
+        youtubeVideoCodec,
         aFormat,
-        filenamePattern,
+        filenameStyle,
         isTTFullAudio,
-        isAudioMuted,
-        dubLang,
         disableMetaData,
         twitterGif,
-        vimeoDash,
         tiktokH265,
         instance
     ] = await Promise.all(promises)
@@ -66,24 +60,20 @@ export async function download() {
     api.tabs.query({ currentWindow: true, active: true }).then(tabs => {
 
         let url = tabs[0].url
-        let uri = encodeURIComponent(url)
 
         let data = {
-            url: uri,
-            isAudioOnly: isAudioOnly,
-            vQuality: vQuality,
-            vCodec: vCodec,
-            aFormat: aFormat,
-            filenamePattern: filenamePattern,
-            isTTFullAudio: isTTFullAudio,
-            isAudioMuted: isAudioMuted,
-            dubLang: dubLang,
-            disableMetaData: disableMetaData,
+            url: url,
+            downloadMode: isAudioOnly,
+            videoQuality: vQuality,
+            youtubeVideoCodec: youtubeVideoCodec,
+            audioFormat: aFormat,
+            filenameStyle: filenameStyle,
+            tiktokFullAudio: isTTFullAudio,
+            disableMetadata: disableMetaData,
             twitterGif: twitterGif,
-            vimeoDash: vimeoDash,
             tiktokH265: tiktokH265
         }
-        console.log(uri)
+
         fetch(instance, {
             method: "POST",
             headers: {

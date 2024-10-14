@@ -19,10 +19,8 @@ const defaults = {
     "quality": "720p",
     "twitter gifs": "Convert to .gif",
     "youtube codec": "h264 (mp4)",
-    "vimeo type": "progressive",
     "audio format": "mp3",
     "mute audio": "unmuted",
-    "yt audio track": "original",
     "tiktok og audio": "modified audio",
     "filename style": "classic",
     "metadata": "yes metadata",
@@ -32,8 +30,8 @@ const defaults = {
 
 const settings = {
     "mode": {
-        auto: false,
-        audio: true,
+        auto: "auto",
+        audio: "audio",
     },
     "quality": {
         "144p": "144",
@@ -55,10 +53,6 @@ const settings = {
         "av1 (mp4)": "av1",
         "vp9 (webm)": "vp9"
     },
-    "vimeo type": {
-        "progressive": false,
-        "dash": true
-    },
     "audio format": {
         "best": "best",
         "mp3": "mp3",
@@ -69,10 +63,6 @@ const settings = {
     "mute audio": {
         "unmuted": false,
         "muted": true
-    },
-    "yt audio track": {
-        "original": false,
-        "translated": true
     },
     "tiktok og audio": {
         "original": true,
