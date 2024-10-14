@@ -1,3 +1,10 @@
+> [!WARNING]
+> As of 14/10/24, the cobalt main instance api has been taken down. This means that this extension **will not work** unless you host your own instance or use a **third party instance**.
+>
+> To host your own instance, follow the [official guide](https://github.com/imputnet/cobalt/blob/main/docs/run-an-instance.md) to get an instance up and running, then press the left arrow in the extension menu and type your instance's URL in the text box.
+>
+> Alternatively, you can use a community cobalt instance. You can find a list [here](https://instances.hyper.lol/).
+
 # Cobalt Browser Extension
 An extension for Firefox and Chromium browsers that uses the [cobalt](https://cobalt.tools/) API.
 
