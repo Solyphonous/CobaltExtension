@@ -3,9 +3,12 @@ body {
     background-color: black;
     font-family: "Noto Sans Mono", "Consolas", "SF Mono", monospace;
     margin: auto;
-    user-select: none;
     overflow: hidden;
     text-align: center;
+}
+
+h1 {
+    user-select: none;
 }
 
 .error-container {

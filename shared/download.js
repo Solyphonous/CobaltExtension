@@ -83,8 +83,8 @@ export async function download() {
             vimeoDash: vimeoDash,
             tiktokH265: tiktokH265
         }
-
-        fetch(instance+"/api/json", {
+        console.log(uri)
+        fetch(instance, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -92,31 +92,40 @@ export async function download() {
             },
             body: JSON.stringify(data)
         })
-            .then(response => response.json())
-            .then(json => {
-                if (json.status != "error") {
+            .then(response => response.text())
+            .then(rawtext => {
+                console.log("Raw response: ", rawtext)
 
-                    api.tabs.create({
-                        url: json.url
-                    }).then(tab => {
-                        api.tabs.onUpdated.addListener(function (tabId, changeInfo, updatedTab) {
-                            if (tabId === tab.id && changeInfo.status === 'complete' && !json.url.includes("twimg") && !json.url.includes("redd.it")) {
-                                api.tabs.remove(tabId);
+                try {
+                    const json = JSON.parse(rawtext)
+
+                    if (json.status != "error") {
+
+                        api.tabs.create({
+                            url: json.url
+                        }).then(tab => {
+                            api.tabs.onUpdated.addListener(function (tabId, changeInfo, updatedTab) {
+                                if (tabId === tab.id && changeInfo.status === 'complete' && !json.url.includes("twimg") && !json.url.includes("redd.it")) {
+                                    api.tabs.remove(tabId);
+                                }
+                            })
+
+                            if (window.location.pathname == "/popup.html") {
+                                window.close()
                             }
                         })
+                    }
+                    else {
+                        //Logs error if returned from cobalt api
+                        showError("error from cobalt api: \n" + json.error.code)
 
-                        if (window.location.pathname == "/popup.html") {
-                            window.close()
-                        }
-                    })
-                }
-                else {
-                    //Logs error if returned from cobalt api
-                    showError(json.text)
+                    }
+                } catch (error) {
+                    showError("failed to parse JSON: \n" + rawtext);
                 }
             })
             //Logs error if POST request fails
-            .catch(error => showError(error))
+            .catch(error => showError("post request failed: \n" + error))
     })
 }
 
