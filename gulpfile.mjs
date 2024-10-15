@@ -38,7 +38,7 @@ function copyFiles(browser) {
 function zipFiles(browser) {
     const ver = getCurrentVersion(browser)
     return gulp.src("./build/**/*")
-    .pipe(zip("cobaltextension_"+browser+"_v"+ver+".zip"))
+    .pipe(zip("cobaltextension_"+browser+".zip"))
     .pipe(gulp.dest("dist/"))
 }
 

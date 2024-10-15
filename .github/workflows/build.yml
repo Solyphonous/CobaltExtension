@@ -22,8 +22,9 @@ jobs:
             - name: Gulp Build
               run: gulp build
             
-            - name: Upload build artifacts
-              uses: actions/upload-artifact@v4
+            - name: Publish Release
+              uses: softprops/action-gh-release@v2
               with:
-                name: extension-build
-                path: dist
+                files: |
+                  dist/cobaltextension_firefox.zip
+                  dist/cobaltextension_chrome.zip
