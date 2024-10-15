@@ -67,6 +67,8 @@ button {
     height: 100%;
     background-color: black;
     transition: right .3s ease;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
     overflow-y: scroll;
 }
 
