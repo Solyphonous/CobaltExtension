@@ -34,7 +34,7 @@ jobs:
                 git config --local user.name "Github Action"
 
                 git stash
-                git --rebase pull origin master
+                git pull --rebase origin master
                 git checkout master
                 git pop
 
