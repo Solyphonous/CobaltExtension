@@ -30,7 +30,7 @@ function copyManifest(browser) {
 }
 
 function zipFiles(browser) {
-    return gulp.src("./build/"+browser+"/**/*")
+    return gulp.src("./build/"+browser+"/**/*", {encoding: false})
     .pipe(zip("cobaltextension_"+browser+"_v"+ver+".zip"))
     .pipe(gulp.dest("dist/"))
 }
