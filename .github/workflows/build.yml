@@ -34,7 +34,6 @@ jobs:
                 git config --local user.name "Github Action"
 
                 git pull origin master
-                git checkout master
 
                 git add src/chrome/manifest.json
                 git add src/firefox/manifest.json
