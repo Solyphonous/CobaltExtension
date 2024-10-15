@@ -1,11 +1,11 @@
-import gulp from 'gulp';
-import zip from 'gulp-zip';
-import jsonTransform from 'gulp-json-transform';
-import fs from 'fs';
-import semver from 'semver';
+import gulp from "gulp"
+import zip from "gulp-zip"
+import jsonTranform from "gulp-json-transform"
+import fs from "fs"
+import semver from "semver"
 
 function getCurrentVersion(browser) {
-    const path = "./src/${browser}/manifest.json"
+    const path = "./src/"+browser+"/manifest.json"
     const manifest = JSON.parse(fs.readFileSync(path));
     return manifest.version;
 }
@@ -15,7 +15,7 @@ function incrementVersion(version) {
 }
 
 function updateManifest(browser) {
-    const path = "./src/${browser}/manifest.json"
+    const path = "./src/"+browser+"/manifest.json"
     const curVer = getCurrentVersion(browser)
     const newVer = incrementVersion(curVer)
 
@@ -30,14 +30,14 @@ function updateManifest(browser) {
 function copyFiles(browser) {
     return gulp.src("./src/shared/**/*")
     .pipe(gulp.dest("./build"))
-    .pipe(gulp.src("./src/${browser}/manifest.json"))
+    .pipe(gulp.src("./src/"+browser+"/manifest.json"))
     .pipe(gulp.dest("./build"))
 }
 
 function zipFiles(browser) {
     const ver = getCurrentVersion(browser)
     return gulp.src("./build/**/*")
-    .pipe(zip("cobaltextension_${browser}_v${ver}.zip"))
+    .pipe(zip("cobaltextension_"+browser+"_v"+ver+".zip"))
     .pipe(gulp.dest(".dist/"))
 }
 
