@@ -23,7 +23,8 @@ function updateManifest(browser) {
         .pipe(jsonTranform(manifest => {
             manifest.version = newVer
             return manifest
-        }))
+        }, 2))
+        .pipe(gulp.dest("./src/"+browser))
         .pipe(gulp.dest("./build"))
 }
 
