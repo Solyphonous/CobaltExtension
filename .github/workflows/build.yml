@@ -38,7 +38,7 @@ jobs:
 
                 git add src/chrome/manifest.json
                 git add src/firefox/manifest.json
-                git commit --amend --no-edit
+                git commit -m "thunk"
                 git push
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
