@@ -1,24 +1,15 @@
 import gulp from "gulp"
 import zip from "gulp-zip"
 import jsonTranform from "gulp-json-transform"
-import fs from "fs"
-import semver from "semver"
+import yargs from "yargs"
 
-function getCurrentVersion(browser) {
-    const path = "./src/"+browser+"/manifest.json"
-    const manifest = JSON.parse(fs.readFileSync(path));
-    return manifest.version;
-}
-
-function incrementVersion(version) {
-    return semver.inc(version, "minor")
-}
+const argv = yargs(process.argv.slice(2)).parse();
+const ver = (argv.ver).substring(1)
 
 function updateManifest(browser) {
     const path = "./src/"+browser+"/manifest.json"
-    const curVer = getCurrentVersion(browser)
-    const newVer = incrementVersion(curVer)
-
+    const newVer = ver
+    
     return gulp.src(path)
         .pipe(jsonTranform(manifest => {
             manifest.version = newVer
@@ -36,9 +27,8 @@ function copyFiles(browser) {
 }
 
 function zipFiles(browser) {
-    const ver = getCurrentVersion(browser)
     return gulp.src("./build/**/*")
-    .pipe(zip("cobaltextension_"+browser+".zip"))
+    .pipe(zip("cobaltextension_"+browser+"_v"+ver+".zip"))
     .pipe(gulp.dest("dist/"))
 }
 

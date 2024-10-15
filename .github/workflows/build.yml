@@ -22,7 +22,7 @@ jobs:
               run: npm install
             
             - name: Gulp Build
-              run: gulp build
+              run: gulp build --ver ${{ github.ref  }}
             
             - name: Ammend Version Change
               run: |

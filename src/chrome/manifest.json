@@ -1,38 +1,38 @@
 {
-    "manifest_version": 3,
-    "name": "CobaltExtension",
-    "version": "1.9.0",
-    "browser_specific_settings": {
-        "gecko": {
-            "id": "cobaltextension@solyphonous.com"
-        }
-    },
-
-    "description": "Allows you to download videos using cobalt, without having to go to the website!",
-    "icons": {
-        "48": "Icons/48.png"
-    },
-
-    "background": {
-        "service_worker": "background.js",
-        "type": "module"
-    },
-
-    "action": {
-        "default_popup": "popup.html"
-    },
-
-    "web_accessible_resources": [
-        {
-            "resources": ["error.html", "error.js"],
-            "matches": ["<all_urls>"]
-        }
-    ],
-
-    "permissions": [
-        "activeTab",
-        "contextMenus",
-        "tabs",
-        "storage"
-    ]
+  "manifest_version": 3,
+  "name": "CobaltExtension",
+  "version": "0.0.0",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "cobaltextension@solyphonous.com"
+    }
+  },
+  "description": "Allows you to download videos using cobalt, without having to go to the website!",
+  "icons": {
+    "48": "Icons/48.png"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "error.html",
+        "error.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+  "permissions": [
+    "activeTab",
+    "contextMenus",
+    "tabs",
+    "storage"
+  ]
 }
