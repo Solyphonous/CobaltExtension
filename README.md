@@ -3,12 +3,12 @@
 >
 > to host your own instance, follow the [official guide](https://github.com/imputnet/cobalt/blob/main/docs/run-an-instance.md) to get an instance up and running, then press the left arrow in the extension menu and type your instance's URL in the text box.
 >
-> Alternatively, you can use a community cobalt instance. you can find a list [here](https://instances.hyper.lol/).
+> alternatively, you can use a community cobalt instance. you can find a list [here](https://instances.hyper.lol/).
 
 # cobalt extension
 an extension for firefox and chromium browsers that uses the [cobalt](https://cobalt.tools/) api.
 
-## Installation
+## installation
 
 ### firefox
 download from the firefox addons site [here](https://addons.mozilla.org/en-GB/firefox/addon/cobaltextension/)! (version 1.11.8)
