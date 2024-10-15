@@ -22,12 +22,15 @@ function updateManifest(browser) {
 function copyFiles(browser) {
     return gulp.src("./src/shared/**/*")
     .pipe(gulp.dest("./build/"+browser))
-    .pipe(gulp.src("./src/"+browser+"/manifest.json"))
+}
+
+function copyManifest(browser) {
+    return gulp.src("./src/"+browser+"/manifest.json")
     .pipe(gulp.dest("./build/"+browser))
 }
 
 function zipFiles(browser) {
-    return gulp.src("./build/"+browser+"/*")
+    return gulp.src("./build/"+browser+"/**/*")
     .pipe(zip("cobaltextension_"+browser+"_v"+ver+".zip"))
     .pipe(gulp.dest("dist/"))
 }
@@ -35,12 +38,14 @@ function zipFiles(browser) {
 gulp.task("build-firefox", gulp.series(
     () => updateManifest("firefox"),
     () => copyFiles("firefox"),
+    () => copyManifest("firefox"),
     () => zipFiles("firefox")
 ))
 
 gulp.task("build-chrome", gulp.series(
     () => updateManifest("chrome"),
     () => copyFiles("chrome"),
+    () => copyManifest("chrome"),
     () => zipFiles("chrome")
 ))
 
