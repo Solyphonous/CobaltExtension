@@ -20,12 +20,9 @@ jobs:
 
             - name: Install Dependencies
               run: npm install
-            
-            - name: Extract version from tag
-              run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
 
             - name: Gulp Build
-              run: gulp build --ver ${{ github.ref }}
+              run: gulp build --ver ${{ github.ref_name }}
             
             - name: Ammend Version Change
               run: |
