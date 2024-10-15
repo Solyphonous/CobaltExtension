@@ -30,9 +30,6 @@ jobs:
             
             - name: Ammend Version Change
               run: |
-                git config --local user.email "action@github.com"
-                git config --local user.name "Github Action"
-
                 git pull origin master
                 git checkout master
 
