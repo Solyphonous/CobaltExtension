@@ -38,7 +38,7 @@ function zipFiles(browser) {
     const ver = getCurrentVersion(browser)
     return gulp.src("./build/**/*")
     .pipe(zip("cobaltextension_"+browser+"_v"+ver+".zip"))
-    .pipe(gulp.dest(".dist/"))
+    .pipe(gulp.dest("dist/"))
 }
 
 gulp.task("build-firefox", gulp.series(

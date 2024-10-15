@@ -11,12 +11,10 @@ jobs:
 
         steps:
             - name: Checkout
-              uses: actions/checkout@v3
+              uses: actions/checkout
 
             - name: Setup Node
-              uses: actions/setup-node@v3
-              with:
-                node-version: 18
+              uses: actions/setup-node
 
             - name: Install Dependencies
               run: npm install
@@ -25,7 +23,7 @@ jobs:
               run: gulp build
             
             - name: Upload build artifacts
-              uses: actions/upload-artifact@v3
+              uses: actions/upload-artifact
               with:
                 name: extension-build
-                path: .dist/*.zip
+                path: dist
