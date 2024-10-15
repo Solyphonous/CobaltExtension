@@ -33,8 +33,8 @@ jobs:
                 git config --local user.email "action@github.com"
                 git config --local user.name "Github Action"
 
+                git pull origin master
                 git checkout master
-                git pull
 
                 git add src/chrome/manifest.json
                 git add src/firefox/manifest.json
