@@ -38,7 +38,7 @@ jobs:
 
                 git add src/chrome/manifest.json
                 git add src/firefox/manifest.json
-                git commit -m "thunk"
+                git commit -m "Update to version ${{ github.ref_name }}"
                 git push
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
