@@ -28,7 +28,8 @@ jobs:
               run: |
                 git config --local user.email "action@github.com"
                 git config --local user.name "Github Action"
-                git add manifest.json
+                git add src/chrome/manifest.json
+                git add src/firefox/manifest.json
                 git commit --amend --no-edit
                 git push -f
               env:
