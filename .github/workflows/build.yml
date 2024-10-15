@@ -33,10 +33,8 @@ jobs:
                 git config --local user.email "action@github.com"
                 git config --local user.name "Github Action"
 
-                git stash
-                git pull --rebase origin master
+                git pull origin master
                 git checkout master
-                git stash pop
 
                 git add src/chrome/manifest.json
                 git add src/firefox/manifest.json
@@ -44,6 +42,7 @@ jobs:
                 git push
               env:
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 
             - name: Publish Release
               uses: softprops/action-gh-release@v2
