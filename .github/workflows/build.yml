@@ -5,6 +5,10 @@ on:
         tags:
             - "v*"
 
+permissions:
+    contents:
+        write
+
 jobs:
     build:
         runs-on: ubuntu-latest
@@ -26,6 +30,7 @@ jobs:
               run: |
                 git config --local user.email "action@github.com"
                 git config --local user.name "Github Action"
+                git checkout master
                 git add src/chrome/manifest.json
                 git add src/firefox/manifest.json
                 git commit --amend --no-edit
