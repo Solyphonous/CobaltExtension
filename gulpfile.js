@@ -1,12 +1,12 @@
-const gulp = require("gulp")
-const zip = require("gulp-zip")
-const jsonTranform = require("gulp-json-transform")
-const file = require("gulp-file")
-const fs = require("fs")
-const semver = require("semver")
+import gulp from 'gulp';
+import zip from 'gulp-zip';
+import jsonTransform from 'gulp-json-transform';
+import fs from 'fs';
+import semver from 'semver';
 
 function getCurrentVersion(browser) {
-    const manifest = JSON.parse(fs.readFileSync(`./src/${browser}/manifest.json`));
+    const path = "./src/${browser}/manifest.json"
+    const manifest = JSON.parse(fs.readFileSync(path));
     return manifest.version;
 }
 
