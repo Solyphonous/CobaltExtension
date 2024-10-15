@@ -26,15 +26,14 @@ jobs:
             - name: Gulp Build
               run: gulp build --ver ${{ github.ref_name }}
             
-            - name: Check if master branch exists
-              run: |
-                git fetch origin master:master || echo "Branch master does not exist."
+            
             
             - name: Ammend Version Change
               run: |
                 git config --local user.email "action@github.com"
                 git config --local user.name "Github Action"
 
+                git pull
                 git checkout master
 
                 git add src/chrome/manifest.json
