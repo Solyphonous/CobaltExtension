@@ -74,6 +74,24 @@ function generateSettings() {
     }
 }
 
+function validateURL(url) {
+    if (!url.match("^https:")) {
+        url = "https://"+url
+    }
+    if (!url.match("/$")) {
+        url = url+"/"
+    }
+
+    return url
+}
+
+function changeInstance(event) {
+    let url = document.getElementById("instance-value").value
+    url = validateURL(url)
+    api.storage.local.set({"instance": url})
+    event.preventDefault()
+}
+
 // Main
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -113,11 +131,6 @@ document.addEventListener("DOMContentLoaded", function () {
     })
 
     document.getElementById("instance-form").addEventListener("submit", function (event) {
-        console.log("Submitted")
-        let url = document.getElementById("instance-value").value
-        console.log(url)
-        api.storage.local.set({"instance": url})
-        event.preventDefault()
+        changeInstance(event)
     })
 })
-
