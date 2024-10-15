@@ -20,7 +20,7 @@ function updateManifest(browser) {
 }
 
 function copyFiles(browser) {
-    return gulp.src("./src/shared/**/*")
+    return gulp.src("./src/shared/**/*", {encoding: false})
     .pipe(gulp.dest("./build/"+browser))
 }
 
