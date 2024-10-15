@@ -3,8 +3,6 @@ import zip from "gulp-zip"
 import jsonTranform from "gulp-json-transform"
 import yargs from "yargs"
 
-console.log("yaya")
-
 const argv = yargs(process.argv.slice(2)).parse();
 const ver = (argv.ver).substring(1)
 
