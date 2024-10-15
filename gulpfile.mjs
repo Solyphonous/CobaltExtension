@@ -16,18 +16,18 @@ function updateManifest(browser) {
             return manifest
         }, 2))
         .pipe(gulp.dest("./src/"+browser))
-        .pipe(gulp.dest("./build"))
+        .pipe(gulp.dest("./build/"+browser))
 }
 
 function copyFiles(browser) {
     return gulp.src("./src/shared/**/*")
-    .pipe(gulp.dest("./build"))
+    .pipe(gulp.dest("./build/"+browser))
     .pipe(gulp.src("./src/"+browser+"/manifest.json"))
-    .pipe(gulp.dest("./build"))
+    .pipe(gulp.dest("./build/"+browser))
 }
 
 function zipFiles(browser) {
-    return gulp.src("./build/**/*")
+    return gulp.src("./build/"+browser+"/*")
     .pipe(zip("cobaltextension_"+browser+"_v"+ver+".zip"))
     .pipe(gulp.dest("dist/"))
 }
