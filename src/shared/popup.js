@@ -89,6 +89,7 @@ function changeInstance(event) {
     let url = document.getElementById("instance-value").value
     url = validateURL(url)
     api.storage.local.set({"instance": url})
+    document.getElementById("instance-value").value = url
     event.preventDefault()
 }
 
