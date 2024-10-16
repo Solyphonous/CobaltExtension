@@ -11,7 +11,7 @@ an extension for firefox and chromium browsers that uses the [cobalt](https://co
 ## installation
 
 ### firefox
-download from the firefox addons site [here](https://addons.mozilla.org/en-GB/firefox/addon/cobaltextension/)! (version 1.11.8)
+download from the firefox addons site [here](https://addons.mozilla.org/en-GB/firefox/addon/cobaltextension/)! (version 1.12.0)
 
 ### chrome
 only available from source since youtube downloaders are not allowed on chrome.
